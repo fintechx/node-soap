@@ -15,7 +15,7 @@
     "sax": ">=0.6",
     "strip-bom": "^3.0.0",
     "uuid": "^8.3.0",
-    "xml-crypto": "^2.1.0"
+    "xml-crypto": "git+https://github.com/istvan-kadar-dr/xml-crypto.git#AG8-3608-bb"
   },
   "repository": {
     "type": "git",
