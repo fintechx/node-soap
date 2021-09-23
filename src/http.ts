@@ -54,7 +54,6 @@ export class HttpClient implements IHttpClient {
     const method = data ? 'POST' : 'GET';
     const headers: IHeaders = {
       'User-Agent': 'node-soap/' + VERSION,
-      'Accept': 'text/html,application/xhtml+xml,application/xml,text/xml;q=0.9,*/*;q=0.8',
       'Accept-Encoding': 'none',
       'Accept-Charset': 'utf-8',
       'Connection': exoptions.forever ? 'keep-alive' : 'close',

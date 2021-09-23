@@ -146,7 +146,7 @@ export class WSSecurityCert implements ISecurity {
     resolvePlaceholderInReferences(this.signer.references, bodyXpath);
 
     if (!(this.signer.references.filter((ref) => (ref.xpath === bodyXpath)).length > 0)) {
-      this.signer.addReference(bodyXpath, references);
+      this.signer.addReference(bodyXpath, references, undefined, undefined, undefined, ['bbrt', 'tns']);
     }
 
     for (const name of this.additionalReferences) {
@@ -158,10 +158,10 @@ export class WSSecurityCert implements ISecurity {
 
     const timestampXpath = `//*[name(.)='wsse:Security']/*[local-name(.)='Timestamp']`;
     if (this.hasTimeStamp && !(this.signer.references.filter((ref) => (ref.xpath === timestampXpath)).length > 0)) {
-      this.signer.addReference(timestampXpath, references);
+      this.signer.addReference(timestampXpath, references, undefined, undefined, undefined, ['wsse', 'bbrt', 'tns', 'soap']);
     }
 
-    this.signer.computeSignature(xmlWithSec, this.signerOptions);
+    this.signer.computeSignature(xmlWithSec, this.signerOptions, ['bbrt', 'tns', 'soap']);
 
     return insertStr(this.signer.getSignatureXml(), xmlWithSec, xmlWithSec.indexOf('</wsse:Security>'));
   }

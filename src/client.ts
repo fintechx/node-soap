@@ -539,6 +539,13 @@ export class Client extends EventEmitter {
       return;
     }
 
+    xml = xml.replace(/bbrt:RequestDate/g, 'RequestDate');
+    xml = xml.replace(/bbrt:RequestTime/g, 'RequestTime');
+    xml = xml.replace(/bbrt:RequestId/g, 'RequestId');
+    xml = xml.replace(/bbrt:ApplicationId/g, 'ApplicationId');
+    xml = xml.replace(/bbrt:ClientIPAddress/g, 'ClientIPAddress');
+    xml = xml.replace(/bbrt:ClientGeoLocation/g, 'ClientGeoLocation');
+
     req = this.httpClient.request(location, xml, (err, response, body) => {
       this.lastResponse = body;
       this.lastResponseHeaders = response && response.headers;
